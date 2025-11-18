@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kozy's Modded Apks</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #ff5f6d, #4a6cf7);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Snow */
+        .snow {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+            opacity: 1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin-top: 20px;
+            border-radius: 10px;
+            background: linear-gradient(to right, red, green);
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.2);
+            padding: 25px;
+            margin: 20px auto;
+            width: 200px;
+            border-radius: 15px;
+        }
+
+        .small-text { font-size: 14px; }
+
+        /* Page switching */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+
+        /* Back button */
+        .backbtn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+
+    <h1>Kozy's Modded Apks</h1>
+
+    <p class="small-text">Welcome To Kozy's Modding Website!</p>
+
+    <a class="button" href="https://discord.gg/pCKcHwuNdp" target="_blank">❄ Join The Discord!</a>
+
+    <div class="box" style="cursor:pointer;" onclick="showPage('apks')">
+        <h2>📱 APK's</h2>
+    </div>
+
+</div>
+
+<!-- THE APK PAGE -->
+<div id="apks" class="page">
+
+    <div class="backbtn" onclick="showPage('home')">⬅ Back</div>
+
+    <h1>Modded Apks</h1>
+    <p>We will upload Modded apks here</p>
+
+</div>
+
+<script>
+// Make snowflakes
+for (let i = 0; i < 199; i++) {
+    let s = document.createElement("div");
+    s.className = "snow";
+    s.style.top = "-10px";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.animationDuration = 1 + Math.random() * 20 + "s";
+    s.style.opacity = "1";
+    s.style.width = s.style.height = "4px";
+    document.body.appendChild(s);
+}
+
+// Pages
+function showPage(page) {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("apks").classList.remove("active");
+
+    document.getElementById(page).classList.add("active");
+}
+</script>
+
+</body>
+</html>
